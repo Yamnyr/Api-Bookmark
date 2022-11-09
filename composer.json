@@ -69,15 +69,18 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
-        "scripts": {
             "start": [
                 "Composer\\Config::disableProcessTimeout",
                 "symfony serve"
-            ]
-        },
+            ],
         "test:cs": "php-cs-fixer fix --dry-run",
         "fix:cs": "php-cs-fixer fix",
-        "TEST": "@test:cs"
+        "test": "@test:cs"
+    },
+    "scripts-descriptions": {
+        "test:cs": "",
+        "fix:cs": "",
+        "test": ""
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -89,6 +92,7 @@
         }
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.13"
+        "friendsofphp/php-cs-fixer": "^3.13",
+        "symfony/maker-bundle": "^1.47"
     }
 }
