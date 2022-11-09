@@ -7,12 +7,12 @@ configuration:\
 ---------------
 ### lancer le serveur :
 #### Commandes:
-lancer le serveur :`start`\
-déclencher php-cs-fixer fix --dry-run :`test:cs`\
-déclencher php-cs-fixer fix:`fix:cs`\
-déclencher le script « test:cs » @test:cs :`test`\
-pour voire la liste des commandes :
-`composer run --list`
+`start`: lancer le serveur\
+`test:cs`: déclencher php-cs-fixer fix --dry-run \
+`fix:cs`: déclencher php-cs-fixer fix\
+`test`: déclencher le script « test:cs » @test:cs\
+`bd`: réinitialiser la base de donnée\
+`composer run --list`: pour voire la liste des commandes
 
 ### base de donnée\
 fichier .env\

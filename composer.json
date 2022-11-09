@@ -75,12 +75,19 @@
             ],
         "test:cs": "php-cs-fixer fix --dry-run",
         "fix:cs": "php-cs-fixer fix",
-        "test": "@test:cs"
+        "test": "@test:cs",
+        "db": [
+            "php bin/console doctrine:database:drop --force",
+            "php bin/console doctrine:database:create",
+            "php bin/console doctrine:migrations:migrate --no-interaction",
+            "php bin/console doctrine:fixtures:load --no-interaction"
+        ]
     },
     "scripts-descriptions": {
-        "test:cs": "",
-        "fix:cs": "",
-        "test": ""
+        "test:cs": "déclenche php-cs-fixer fix --dry-run",
+        "fix:cs": "déclenche php-cs-fixer fix",
+        "test": "déclenche le script « test:cs »",
+        "db": "réinitialiser la base de donnée"
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -92,7 +99,9 @@
         }
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
         "friendsofphp/php-cs-fixer": "^3.13",
-        "symfony/maker-bundle": "^1.47"
+        "symfony/maker-bundle": "^1.47",
+        "zenstruck/foundry": "^1.22"
     }
 }
