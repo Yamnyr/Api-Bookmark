@@ -45,7 +45,7 @@ final class BookmarkFactory extends ModelFactory
             'creationDate' => self::faker()->dateTimeThisDecade('+2 years'),
             'isPublic' => self::faker()->boolean(),
             'url' => self::faker()->url(),
-            'rateAverage' => self::faker()->randomFloat(),
+            'rateAverage' => 0,
         ];
     }
 

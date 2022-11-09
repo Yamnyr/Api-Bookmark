@@ -6,9 +6,18 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\BookmarkRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 
 #[ORM\Entity(repositoryClass: BookmarkRepository::class)]
+#[ApiResource(order: ['name' => 'ASC'])]
+
 #[ApiResource]
+#[ApiFilter(BooleanFilter::class, properties: ['isAvailableGenericallyInMyCountry'])]
+#[ApiFilter(OrderFilter::class, properties: ['creationDate','name', 'rateAverage'], arguments: ['orderParameterName' => 'order'])]
+#[ApiFilter(SearchFilter::class, properties: ['name' => 'partial', 'description' => 'partial'])]
 class Bookmark
 {
     #[ORM\Id]
