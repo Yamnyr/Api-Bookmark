@@ -33,13 +33,11 @@ final class BookmarkFactory extends ModelFactory
     {
         parent::__construct();
 
-        // TODO inject services if required (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services)
     }
 
     protected function getDefaults(): array
     {
         return [
-            // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'name' => self::faker()->company(),
             'description' => self::faker()->paragraph(),
             'creationDate' => self::faker()->dateTimeThisDecade('+2 years'),

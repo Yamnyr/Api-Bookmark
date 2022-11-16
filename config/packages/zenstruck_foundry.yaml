@@ -4,4 +4,9 @@ when@dev: &dev
         # Whether to auto-refresh proxies by default (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#auto-refresh)
         auto_refresh_proxies: true
 
+        # Configure faker to be used by your factories.
+        faker:
+
+            locale: fr_FR # Example: fr_FR
+
 when@test: *dev
