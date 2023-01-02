@@ -6,6 +6,7 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\RatingRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: RatingRepository::class)]
 #[ApiResource]
@@ -25,6 +26,10 @@ class Rating
     private ?User $utilisateur = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
+    #[Assert\Range(
+        min: 0,
+        max: 10,
+    )]
     private ?int $value = null;
 
     public function getId(): ?int
