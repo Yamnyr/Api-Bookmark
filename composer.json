@@ -118,7 +118,7 @@
         "codeception/module-symfony": "^3.1",
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "friendsofphp/php-cs-fixer": "^3.13",
-        "symfony/maker-bundle": "^1.47",
+        "symfony/maker-bundle": "^1.48",
         "zenstruck/foundry": "^1.22"
     }
 }
