@@ -7,6 +7,8 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Put;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -64,6 +66,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         message: 'l\email {{ value }} n\'est pas valide.',
     )]
     private ?string $mail = null;
+
+    #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Rating::class, orphanRemoval: true)]
+    private Collection $ratings;
+
+    public function __construct()
+    {
+        $this->ratings = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -198,6 +208,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setMail(string $mail): self
     {
         $this->mail = $mail;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Rating>
+     */
+    public function getRatings(): Collection
+    {
+        return $this->ratings;
+    }
+
+    public function addRating(Rating $rating): self
+    {
+        if (!$this->ratings->contains($rating)) {
+            $this->ratings->add($rating);
+            $rating->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRating(Rating $rating): self
+    {
+        if ($this->ratings->removeElement($rating)) {
+            // set the owning side to null (unless already changed)
+            if ($rating->getUtilisateur() === $this) {
+                $rating->setUtilisateur(null);
+            }
+        }
 
         return $this;
     }
