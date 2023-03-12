@@ -1,20 +1,34 @@
 
 # Api-Bookmark
 
-## WAROQUET Quentin
+## Projet Api-Platform
 
-configuration:\
----------------
-### lancer le serveur :
-#### Commandes:
-`start`: lancer le serveur\
-`test:cs`: déclencher php-cs-fixer fix --dry-run \
-`fix:cs`: déclencher php-cs-fixer fix\
-`test`: déclencher le script « test:cs » @test:cs\
-`bd`: réinitialiser la base de donnée\
-`composer run --list`: pour voire la liste des commandes
+## Installation
 
-### base de donnée\
-fichier .env\
-remplacer cett eligne:\
-`DATABASE_URL=mysql://identifiant:mot-de-passe@mysql:3306/nom-de-la-base-de-donnée?serverVersion=mariadb-10.2.25`
+Installation des dépendances PHP avec composer :
+
+```shell
+composer install
+```
+
+Création d'un fichier `.env.local` à partir du fichier `.env` :
+
+```shell
+cp .env .env.local
+```
+
+Puis modifiez les variables d'environnement du fichier `.env.local` selon votre environnement local.
+
+Mise en place de la base de données :
+
+```shell
+composer bd
+```
+
+## Développement
+
+Lancement du serveur de développement :
+
+```shell
+composer start
+```
